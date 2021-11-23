@@ -1,0 +1,78 @@
+﻿<Window x:Class="Robothello.PL.RobothelloMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Robothello" Height="710" Width="600" ResizeMode="NoResize">
+    <Window.CommandBindings>
+        <CommandBinding Command="New" Executed="NewCommand_Executed" />
+        <CommandBinding Command="Close" Executed="ExitCommand_Executed" />
+    </Window.CommandBindings>
+    <Grid Name="mainGrid" Margin="4,0,4,4" Background="DarkGreen">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="21" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+        <Menu IsMainMenu="True" Grid.Row="0" Margin="0,0,0,0">
+            <Menu.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.WindowColorKey}}"/>
+            </Menu.Background>
+            <MenuItem Name="miFile" Header="File">
+                <MenuItem Name="miNew" Header="New Game" Command="New" />
+                <Separator />
+                <MenuItem Name="miExit" Header="Exit" Command="Close" InputGestureText="Alt+F4"/>
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35" />
+                <RowDefinition Height="35" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.ColumnSpan="6" Background="White"/>
+            <Label Content="AI" Grid.Row="0" Grid.Column="0" FontFamily="Arial" FontSize="12" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" Margin="6,6,0,6"/>
+            <Label Name="lblAIDiscs" Content="64" Grid.Row="0" Grid.Column="1" FontFamily="Arial" FontSize="12" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="6,6,0,6" Padding="0" BorderBrush="Black" BorderThickness="0.5"/>
+            <Label Grid.Row="0" Grid.Column="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="10,0,10,0" Margin="6,6,0,6" BorderBrush="Black" BorderThickness="0.5">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Depth: " VerticalContentAlignment="Center" Padding="0" FontFamily="Arial" FontSize="12" FontWeight="Bold"/>
+                    <Label Name="lblAIDepth" Content="0" VerticalContentAlignment="Center" Padding="0" FontFamily="Arial" FontSize="12" FontWeight="Bold"/>
+                </StackPanel>
+            </Label>
+            <Label Grid.Row="0" Grid.Column="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="10,0,10,0" Margin="6,6,0,6" BorderBrush="Black" BorderThickness="0.5">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Nodes: " VerticalContentAlignment="Center" Padding="0" FontFamily="Arial" FontSize="12" FontWeight="Bold"/>
+                    <Label Name="lblAINodes" Content="0" VerticalContentAlignment="Center" Padding="0" FontFamily="Arial" FontSize="12" FontWeight="Bold"/>
+                </StackPanel>
+            </Label>
+            <Label Grid.Row="0" Grid.Column="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="10,0,10,0" Margin="6,6,0,6" BorderBrush="Black" BorderThickness="0.5">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Pruned: " VerticalContentAlignment="Center" Padding="0" FontFamily="Arial" FontSize="12" FontWeight="Bold"/>
+                    <Label Name="lblAIPrune" Content="0" VerticalContentAlignment="Center" Padding="0" FontFamily="Arial" FontSize="12" FontWeight="Bold"/>
+                </StackPanel>
+            </Label>
+            <Label Grid.Row="0" Grid.Column="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="10,0,10,0" Margin="6" BorderBrush="Black" BorderThickness="0.5">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Time: " VerticalContentAlignment="Center" Padding="0" FontFamily="Arial" FontSize="12" FontWeight="Bold"/>
+                    <Label Name="lblAITime" Content="0.000s" VerticalContentAlignment="Center" Padding="0"  FontFamily="Arial" FontSize="12" FontWeight="Bold"/>
+                </StackPanel>
+            </Label>
+            <Label Grid.Row="1" Grid.ColumnSpan="6" Background="Black"/>
+            <Label Name="lblHumanName" Content="HUMAN" Grid.Row="1" Foreground="White" FontSize="12" FontWeight="Bold" FontFamily="Arial" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" Margin="6,6,0,6"/>
+            <Label Name="lblHumanDiscs" Content="0" Grid.Row="1" Grid.Column="1" Foreground="White" FontFamily="Arial" FontSize="12" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" Margin="6,6,0,6" BorderBrush="White" BorderThickness="0.5"/>
+            <Label Name="lblHumanInfo" Content="AI: Let's play, you are black!" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" Foreground="White" FontFamily="Arial" FontSize="12" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" Margin="6" BorderBrush="White" BorderThickness="0.5"/>
+        </Grid>
+    </Grid>
+</Window>
